@@ -1,4 +1,4 @@
-# Kindroid Bot (KBot)
+# Kindroid Bot (KBot) - Kindroid API and profile manager to connect to Discord and Twitch
 
 An Android app that bridges your [Kindroid](https://kindroid.ai) AI companion to **Discord** and **Twitch** chat. Run it on your phone, tablet, or Android TV — your Kin replies to mentions in real time, even when the app is in the background.
 
