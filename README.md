@@ -15,6 +15,7 @@ An Android app that bridges your [Kindroid](https://kindroid.ai) AI companion to
 - **Foreground service** — keeps connections alive in the background with wake/wifi locks
 - **Profile system** — save, switch, and manage multiple bot configurations (different Kins, tokens, channels)
 - **Live console** — scrolling log viewer with colour-coded tags + a direct message input for testing your Kin
+- **Content filter** — inbound moderation filter blocks slurs, hate speech, CSAM, violence/self-harm planning, doxing, and illegal requests before they reach the Kindroid API. Includes evasion detection for leet-speak, unicode homoglyphs, inserted separators, and spaced-out letters. Slur database sourced from [dsojevic/profanity-list](https://github.com/dsojevic/profanity-list) (MIT)
 - **Adaptive layout** — works on phones, tablets, and Samsung DeX / Android desktop mode
 
 
@@ -108,6 +109,7 @@ com.nytte.kindroidbotmanager/
 │   ├── components/                ProfileSelector · BotControlBar
 │   └── viewmodel/MainViewModel.kt
 └── util/
+    ├── ContentFilter.kt          Inbound message moderation filter
     └── LogEntry.kt               Timestamped, tagged log entries
 ```
 
