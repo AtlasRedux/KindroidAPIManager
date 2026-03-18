@@ -4,6 +4,11 @@ An Android app that bridges your [Kindroid](https://kindroid.ai) AI companion to
 
 > Ported from the original Windows desktop build (C++ / Win32) to Kotlin + Jetpack Compose.
 
+## WARNING WARNING WARNING WARNING WARNING
+
+While I have implemented an aggressive "smart" filter, it is not AI context aware and is very much breakable.
+Always only expose your Kins to people you trust will not try to break guidelines, or you risk your account getting banned.
+
 ---
 
 ## Features
