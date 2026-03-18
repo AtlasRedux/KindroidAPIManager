@@ -1,5 +1,6 @@
 package com.nytte.kindroidbotmanager.network
 
+import com.nytte.kindroidbotmanager.util.ContentFilter
 import com.nytte.kindroidbotmanager.util.LogEntry
 import com.nytte.kindroidbotmanager.util.LogTag
 import kotlinx.coroutines.Dispatchers
@@ -32,6 +33,12 @@ class KindroidApiClient(
     suspend fun sendMessage(username: String, channelName: String, message: String): Result<String> =
         withContext(Dispatchers.IO) {
             try {
+                val filterResult = ContentFilter.check(message)
+                if (filterResult.blocked) {
+                    log(LogEntry(LogTag.INFO, "Content filter: ${filterResult.reason}"))
+                    return@withContext Result.failure(Exception(filterResult.reason))
+                }
+
                 val formattedMessage = "<Message to you from $username in channel $channelName> $message"
 
                 val body = buildJsonObject {
@@ -91,6 +98,12 @@ class KindroidApiClient(
     suspend fun sendDirectMessage(message: String): Result<String> =
         withContext(Dispatchers.IO) {
             try {
+                val filterResult = ContentFilter.check(message)
+                if (filterResult.blocked) {
+                    log(LogEntry(LogTag.INFO, "Content filter: ${filterResult.reason}"))
+                    return@withContext Result.failure(Exception(filterResult.reason))
+                }
+
                 val body = buildJsonObject {
                     put("ai_id", aiId)
                     put("message", message)
